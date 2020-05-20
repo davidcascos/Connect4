@@ -1,5 +1,6 @@
 package com.dcascos.connect4.layouts;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -40,6 +41,8 @@ public class MainMenu extends AppCompatActivity implements PopupMenu.OnMenuItemC
 			@Override
 			public void onClick(View v) {
 				click.start();
+				Intent intent = new Intent(MainMenu.this, Rules.class);
+				startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainMenu.this).toBundle());
 			}
 		});
 
