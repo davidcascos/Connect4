@@ -1,18 +1,20 @@
 package com.dcascos.connect4.layouts;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.PopupMenu;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.dcascos.connect4.R;
+import com.dcascos.connect4.utils.GameOptions;
 
-public class MainMenu extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,5 +57,24 @@ public class MainMenu extends AppCompatActivity {
 				finish();
 			}
 		});
+	}
+
+	public void showConfMenu(View v) {
+		PopupMenu popup = new PopupMenu(this, v);
+		popup.setOnMenuItemClickListener(this);
+		popup.inflate(R.menu.menu_options);
+		popup.show();
+	}
+
+	@Override
+	public boolean onMenuItemClick(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.menu_options:
+				Intent intent = new Intent(MainMenu.this, GameOptions.class);
+				startActivity(intent);
+				return true;
+			default:
+				return false;
+		}
 	}
 }
