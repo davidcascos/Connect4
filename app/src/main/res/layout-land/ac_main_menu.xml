@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:app = "http://schemas.android.com/apk/res-auto"
+	xmlns:tools = "http://schemas.android.com/tools"
+	android:id = "@+id/ac_main_menu"
+	android:layout_width = "match_parent"
+	android:layout_height = "match_parent"
+	android:layout_marginLeft = "40dp"
+	android:layout_marginRight = "40dp"
+	tools:context = ".layouts.MainMenu">
+
+	<ImageView
+		android:id = "@+id/iv_logo"
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
+		android:layout_alignParentLeft = "true"
+		android:layout_centerVertical = "true"
+		android:layout_marginTop = "80dp"
+		android:layout_marginBottom = "80dp"
+		android:adjustViewBounds = "true"
+		app:srcCompat = "@drawable/app_logo"/>
+
+	<LinearLayout
+		android:id = "@+id/linearButtons"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:layout_alignParentRight = "true"
+		android:layout_centerVertical = "true"
+		android:layout_marginLeft = "40dp"
+		android:layout_marginTop = "20dp"
+		android:layout_toRightOf = "@+id/iv_logo"
+		android:orientation = "vertical">
+
+		<Button
+			android:id = "@+id/bt_play"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_gravity = "center_horizontal"
+			android:background = "@drawable/shape_button"
+			android:text = "@string/bt_play"
+			android:textColor = "@color/textColorClear"
+			android:textSize = "18sp"/>
+
+		<Button
+			android:id = "@+id/bt_rules"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_gravity = "center_horizontal"
+			android:layout_marginTop = "10dp"
+			android:background = "@drawable/shape_button"
+			android:text = "@string/bt_rules"
+			android:textColor = "@color/textColorClear"
+			android:textSize = "18sp"/>
+
+		<Button
+			android:id = "@+id/bt_register"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_gravity = "center_horizontal"
+			android:layout_marginTop = "10dp"
+			android:background = "@drawable/shape_button"
+			android:text = "@string/bt_register"
+			android:textColor = "@color/textColorClear"
+			android:textSize = "18sp"/>
+
+		<Button
+			android:id = "@+id/bt_exit"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:layout_gravity = "center_horizontal"
+			android:layout_marginTop = "20dp"
+			android:background = "@drawable/shape_button_exit"
+			android:text = "@string/bt_exit"
+			android:textColor = "@color/textColorClear"
+			android:textSize = "18sp"/>
+	</LinearLayout>
+</RelativeLayout>
