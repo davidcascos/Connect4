@@ -1,0 +1,95 @@
+<resources>
+	<!--- General -->
+	<string name = "app_name">Connect4</string>
+	<string name = "developed_by">Desarrollado por David Cascos©</string>
+
+	<!--- Main Menu -->
+	<string name = "bt_play">Jugar</string>
+	<string name = "bt_rules">Reglas</string>
+	<string name = "bt_exit">Salir</string>
+	<string name = "bt_register">Registro</string>
+
+	<!--- Rules -->
+	<string name = "titleRules">Reglas</string>
+	<string name = "textRules">Connect 4 es un juego de mesa estratégico para dos jugadores.\n
+		\nEl objetivo del juego es alinear cuatro fichas consecutivas del color asignado al jugador antes que tu oponente. \n
+		\nEl jugador que primero logra alinear cuatro fichas consecutivas de su color horizontal, vertical o diagonal gana el juego.</string>
+
+	<!--- Configuration -->
+	<string name = "textMenuOptions">Opciones</string>
+	<string name = "textAlias">Alias</string>
+	<string name = "descAlias">Alias del jugador</string>
+	<string name = "dialogAlias">Inserta un alias</string>
+	<string name = "defaultAliasP1">Jugador 1</string>
+	<string name = "textTime">Control de tiempo</string>
+	<string name = "descTime">Marca la casilla para limitar el tiempo de juego</string>
+	<string name = "textSizeGrid">Tamaño del tablero</string>
+	<string name = "descGridSize">Selecciona el tamaño NxN del tablero</string>
+	<string name = "dialogGridSize">Selecciona el tamaño del tablero</string>
+	<string name = "defaultGrid">7</string>
+
+	<!--- Game -->
+	<string name = "columnFilled">Columna llena</string>
+	<string name = "turn">Turno: </string>
+	<string name = "seconds">segs</string>
+	<string name = "toastWin">Has ganado!</string>
+	<string name = "toastLose">Has perdido!</string>
+	<string name = "toastDraw">Empate!</string>
+	<string name = "toastEndTime">Se ha acabado el tiempo!</string>
+	<string name = "toastCorrectSave">Datos guardados correctamente en la BD</string>
+	<string name = "toastErrorSave">Error al guardar los datos en la DB</string>
+
+	<!--- Game Log -->
+	<string name = "textLog">LOG:</string>
+	<string name = "timeControl">Con control de tiempo</string>
+	<string name = "noTimeControl">Sin control de tiempo</string>
+	<string name = "cellFilled">Casilla seleccionada: (</string>
+	<string name = "timeRemain">Tiempo restante: </string>
+	<string name = "startChoice">Inicio de tirada: </string>
+	<string name = "endChoice">Fin de tirada: </string>
+	<string name = "victory">Victoria</string>
+	<string name = "defeat">Derrota</string>
+	<string name = "draw">Empate</string>
+
+	<!--- Results -->
+	<string name = "titleResults">Resultados</string>
+	<string name = "textDate">Fecha</string>
+	<string name = "textLogValues">Valores del log</string>
+	<string name = "textEmail">Enviar a</string>
+	<string name = "bt_newGame">Volver a jugar</string>
+	<string name = "bt_sendMail">Enviar Mail</string>
+	<string name = "defaultMail">connect4@gmail.com</string>
+	<string name = "totalTime">Tiempo total</string>
+
+	<!--- Layout Detail -->
+	<string name = "titleRegister">Registro</string>
+	<string name = "titleResult">Resultado</string>
+	<string name = "textDetailGameHistory">Detalles partida</string>
+	<string name = "True">Si</string>
+	<string name = "False">No</string>
+
+	<!--- Keys -->
+	<string name = "keyTokenPositions">keyTokenPositions</string>
+	<string name = "keyGame">keyGame</string>
+	<string name = "keyTimeControl">keyTimeControl</string>
+	<string name = "keyMillisLeft">keyMillisLeft</string>
+	<string name = "keyText">keyText</string>
+	<string name = "keyItemId">keyItemId</string>
+	<string name = "keyTimePlayed">keyTimePlayed</string>
+	<string name = "keyStatus">keyStatus</string>
+
+	<!--- Preferences -->
+	<string name = "prefEtAlias">prefEtAlias</string>
+	<string name = "prefCbTime">prefCbTime</string>
+	<string name = "prefListGrid">prefListGrid</string>
+
+	<!--- DB -->
+	<string name = "tableName">Games</string>
+	<string name = "db_alias">alias</string>
+	<string name = "db_date">date</string>
+	<string name = "db_size">size</string>
+	<string name = "db_timing">timing</string>
+	<string name = "db_time">time</string>
+	<string name = "db_result">result</string>
+	<string name = "db_image">image</string>
+</resources>

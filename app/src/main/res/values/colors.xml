@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name = "colorPrimary">#33b4e4</color>
+	<color name = "colorPrimaryDark">#0d96c9</color>
+	<color name = "colorAccent">#D81B60</color>
+	<color name = "textColorClear">#FFFFFF</color>
+	<color name = "textColorDark">#000000</color>
+
+	<color name = "colorGrid">#1A7CFF</color>
+	<color name = "colorTiming">#FC0006</color>
+	<color name = "colorNoTiming">#0d96c9</color>
+	<color name = "background">#FFFFFF</color>
+	<color name = "invisible">#00FFFFFF</color>
+
+	<color name="cardViewBackground">#d5d6d6</color>
+
+	<color name = "colorTokenRed">#FC0006</color>
+	<color name = "colorTokenYellow">#F8AA11</color>
+</resources>

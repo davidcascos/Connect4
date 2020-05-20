@@ -1,0 +1,96 @@
+<resources>
+	<!--- General -->
+	<string name = "app_name">Connect4</string>
+	<string name = "developed_by">Developed by David Cascos©</string>
+
+	<!--- Main Menu -->
+	<string name = "bt_play">Play</string>
+	<string name = "bt_rules">Rules</string>
+	<string name = "bt_exit">Exit</string>
+	<string name = "bt_register">Register</string>
+
+	<!--- Rules -->
+	<string name = "titleRules">Rules</string>
+	<string name = "textRules">Connect 4 is a strategic board game for two players.\n
+		\nThe objective of the game is to line up four consecutive tiles of the color assigned to the player before your opponent.\n
+		\nThe player who first manages to align four consecutive tiles of their color horizontally, vertically or diagonally wins the game.</string>
+
+	<!--- Configuration -->
+	<string name = "textMenuOptions">Options</string>
+	<string name = "textAlias">Alias</string>
+	<string name = "descAlias">Player alias</string>
+	<string name = "dialogAlias">Insert alias</string>
+	<string name = "defaultAliasP1">Player 1</string>
+	<string name = "textTime">Time control</string>
+	<string name = "descTime">Check to limit the game time</string>
+	<string name = "textSizeGrid">Grid size</string>
+	<string name = "descGridSize">Select the NxN grid size</string>
+	<string name = "dialogGridSize">Select the grid size</string>
+	<string name = "defaultGrid">7</string>
+
+	<!--- Game -->
+	<string name = "columnFilled">Column filled</string>
+	<string name = "turn">Turn: </string>
+	<string name = "seconds">secs</string>
+	<string name = "toastWin">You Win!</string>
+	<string name = "toastLose">You Lose!</string>
+	<string name = "toastDraw">Draw!</string>
+	<string name = "toastEndTime">End time!</string>
+
+	<string name = "toastCorrectSave">Correct save in DB</string>
+	<string name = "toastErrorSave">Error when save in DB</string>
+
+	<!--- Game Log -->
+	<string name = "textLog">LOG:</string>
+	<string name = "timeControl">With time control</string>
+	<string name = "noTimeControl">Without time control</string>
+	<string name = "cellFilled">Selected cell: (</string>
+	<string name = "timeRemain">Remaining time: </string>
+	<string name = "startChoice">Start choice: </string>
+	<string name = "endChoice">End choice: </string>
+	<string name = "victory">Victory</string>
+	<string name = "defeat">Defeat</string>
+	<string name = "draw">Draw</string>
+
+	<!--- Results -->
+	<string name = "titleResults">Results</string>
+	<string name = "textDate">Date</string>
+	<string name = "textLogValues">Log values</string>
+	<string name = "textEmail">Mail to</string>
+	<string name = "bt_newGame">New Game</string>
+	<string name = "bt_sendMail">Send Mail</string>
+	<string name = "defaultMail">connect4@gmail.com</string>
+	<string name = "totalTime">Total time</string>
+
+	<!--- Layout Detail -->
+	<string name = "titleRegister">Register</string>
+	<string name = "textDetailGameHistory">Game Detail</string>
+	<string name = "titleResult">Result</string>
+	<string name = "True">Yes</string>
+	<string name = "False">No</string>
+
+	<!--- Keys -->
+	<string name = "keyTokenPositions">keyTokenPositions</string>
+	<string name = "keyGame">keyGame</string>
+	<string name = "keyTimeControl">keyTimeControl</string>
+	<string name = "keyMillisLeft">keyMillisLeft</string>
+	<string name = "keyText">keyText</string>
+	<string name = "keyItemId">keyItemId</string>
+	<string name = "keyTimePlayed">keyTimePlayed</string>
+	<string name = "keyStatus">keyStatus</string>
+
+	<!--- Preferences -->
+	<string name = "prefEtAlias">prefEtAlias</string>
+	<string name = "prefCbTime">prefCbTime</string>
+	<string name = "prefListGrid">prefListGrid</string>
+
+	<!--- DB -->
+	<string name = "tableName">Games</string>
+	<string name = "db_alias">alias</string>
+	<string name = "db_date">date</string>
+	<string name = "db_size">size</string>
+	<string name = "db_timing">timing</string>
+	<string name = "db_time">time</string>
+	<string name = "db_result">result</string>
+	<string name = "db_image">image</string>
+</resources>
