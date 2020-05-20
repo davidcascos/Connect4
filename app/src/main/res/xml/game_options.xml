@@ -1,0 +1,31 @@
+<?xml version ="1.0" encoding ="utf-8"?>
+<PreferenceScreen
+	xmlns:android = "http://schemas.android.com/apk/res/android">
+
+	<EditTextPreference
+		android:defaultValue = "@string/defaultAliasP1"
+		android:dialogTitle = "@string/dialogAlias"
+		android:icon = "@drawable/ic_alias"
+		android:key = "@string/prefEtAlias"
+		android:selectAllOnFocus = "true"
+		android:singleLine = "true"
+		android:summary = "@string/descAlias"
+		android:title = "@string/textAlias"/>
+
+	<CheckBoxPreference
+		android:defaultValue = "false"
+		android:icon = "@drawable/ic_clock"
+		android:key = "@string/prefCbTime"
+		android:summary = "@string/descTime"
+		android:title = "@string/textTime"/>
+
+	<ListPreference
+		android:defaultValue = "@string/defaultGrid"
+		android:dialogTitle = "@string/dialogGridSize"
+		android:entries = "@array/grid_size"
+		android:entryValues = "@array/grid_size"
+		android:icon = "@drawable/ic_grid"
+		android:key = "@string/prefListGrid"
+		android:summary = "@string/descGridSize"
+		android:title = "@string/textSizeGrid"/>
+</PreferenceScreen>
