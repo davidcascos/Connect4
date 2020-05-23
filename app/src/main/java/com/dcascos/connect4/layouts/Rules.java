@@ -17,12 +17,12 @@ public class Rules extends AppCompatActivity {
 		setContentView(R.layout.ac_rules);
 
 		ImageButton bt_back = findViewById(R.id.bt_back);
-		final MediaPlayer click = MediaPlayer.create(this, R.raw.click);
+		final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.click);
 
 		bt_back.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				click.start();
+				clickSound.start();
 				finish();
 			}
 		});
