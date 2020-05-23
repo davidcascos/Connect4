@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:tools = "http://schemas.android.com/tools"
+	android:id = "@+id/ac_board_game"
+	android:layout_width = "match_parent"
+	android:layout_height = "match_parent"
+	tools:context = ".layouts.BoardGame">
+
+	<LinearLayout
+		android:id = "@+id/linearRegister"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:baselineAligned = "false"
+		android:orientation = "horizontal"
+		android:padding = "10dp">
+
+		<fragment
+			android:id = "@+id/fr_grid"
+			android:name = "com.dcascos.connect4.fragments.GridFrag"
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			android:layout_marginTop = "20dp"
+			android:layout_marginRight = "20dp"
+			android:layout_marginBottom = "20dp"
+			android:layout_weight = "1"
+			tools:layout = "@layout/fr_grid"/>
+
+		<fragment
+			android:id = "@+id/fr_log"
+			android:name = "com.dcascos.connect4.fragments.LogFrag"
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			android:layout_marginTop = "20dp"
+			android:layout_marginRight = "20dp"
+			android:layout_marginBottom = "20dp"
+			android:layout_weight = "1"
+			tools:layout = "@layout/fr_log"/>
+	</LinearLayout>
+</RelativeLayout>
