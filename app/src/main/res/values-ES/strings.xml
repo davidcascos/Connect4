@@ -77,19 +77,10 @@
 	<string name = "keyItemId">keyItemId</string>
 	<string name = "keyTimePlayed">keyTimePlayed</string>
 	<string name = "keyStatus">keyStatus</string>
+	<string name = "keyLog">keyLog</string>
 
 	<!--- Preferences -->
 	<string name = "prefEtAlias">prefEtAlias</string>
 	<string name = "prefCbTime">prefCbTime</string>
 	<string name = "prefListGrid">prefListGrid</string>
-
-	<!--- DB -->
-	<string name = "tableName">Games</string>
-	<string name = "db_alias">alias</string>
-	<string name = "db_date">date</string>
-	<string name = "db_size">size</string>
-	<string name = "db_timing">timing</string>
-	<string name = "db_time">time</string>
-	<string name = "db_result">result</string>
-	<string name = "db_image">image</string>
 </resources>
