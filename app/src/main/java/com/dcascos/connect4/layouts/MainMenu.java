@@ -23,7 +23,7 @@ public class MainMenu extends AppCompatActivity implements PopupMenu.OnMenuItemC
 		getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
 		setContentView(R.layout.ac_main_menu);
 
-		final MediaPlayer click = MediaPlayer.create(this, R.raw.click);
+		final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.click);
 
 		Button bt_play = findViewById(R.id.bt_play);
 		Button bt_rules = findViewById(R.id.bt_rules);
@@ -33,14 +33,17 @@ public class MainMenu extends AppCompatActivity implements PopupMenu.OnMenuItemC
 		bt_play.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				click.start();
+				clickSound.start();
+				Intent intent = new Intent(MainMenu.this, BoardGame.class);
+				startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainMenu.this).toBundle());
+				finish();
 			}
 		});
 
 		bt_rules.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				click.start();
+				clickSound.start();
 				Intent intent = new Intent(MainMenu.this, Rules.class);
 				startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainMenu.this).toBundle());
 			}
@@ -49,14 +52,14 @@ public class MainMenu extends AppCompatActivity implements PopupMenu.OnMenuItemC
 		bt_register.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				click.start();
+				clickSound.start();
 			}
 		});
 
 		bt_exit.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				click.start();
+				clickSound.start();
 				finish();
 			}
 		});
