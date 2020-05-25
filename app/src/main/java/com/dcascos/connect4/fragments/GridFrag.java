@@ -48,6 +48,7 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 	private String alias;
 	private int gridSize;
 	private boolean timeControl;
+	private int maximumTime;
 	//Logic
 	Game game;
 	//Time control
@@ -90,7 +91,6 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 			tokens = savedInstanceState.getIntArray(getString(R.string.keyTokenPositions));
 			timeLeftInMilliseconds = savedInstanceState.getLong(getString(R.string.keyMillisLeft));
 			timePlayed = savedInstanceState.getLong(getString(R.string.keyTimePlayed));
-			startChronometer();
 		} else {
 			game = new Game(gridSize);
 
@@ -98,9 +98,10 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 			for (int i = 0; i < tokens.length; i++) {
 				tokens[i] = R.drawable.token_empty;
 			}
-			timeLeftInMilliseconds = 31000; //30 seg
-			startChronometer();
+
+			timeLeftInMilliseconds = (maximumTime * 1000) + 1000; //30 seg
 		}
+		startChronometer();
 		preprareGrid();
 		initGame();
 	}
@@ -127,7 +128,6 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 				checkEndGame();
 			} else {
 				playsOpposite();
-				//Torna a iniciar temps de tirada i modifica token al player1
 				iv_token.setImageResource(R.drawable.token_red);
 				initThrow = new SimpleDateFormat("HH:mm:ss").format(new Date());
 			}
@@ -139,6 +139,7 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 		alias = prefs.getString(getString(R.string.prefEtAlias), getString(R.string.defaultAliasP1));
 		gridSize = Integer.parseInt(prefs.getString(getString(R.string.prefListGrid), getString(R.string.defaultGrid)));
 		timeControl = prefs.getBoolean(getString(R.string.prefCbTime), false);
+		maximumTime = Integer.parseInt(prefs.getString(getString(R.string.prefTime), getString(R.string.defaultTime)));
 	}
 
 	public void preprareGrid() {
@@ -163,7 +164,6 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 	private void startCountDownTimer() {
 		ch_time.setTextColor(ContextCompat.getColor(getActivity(), R.color.invisible));
 		tv_time.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorTiming));
-		//endTime = System.currentTimeMillis() + timeLeftInMilliseconds;
 		CountDownTimer countDownTimer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
 			@Override
 			public void onTick(long millisUntilFinished) {
@@ -179,7 +179,7 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 			@Override
 			public void onFinish() {
 				game.setStatus(Status.ALL_PLAYER_LOSE);
-				//checkEndGame();
+				checkEndGame();
 			}
 		}.start();
 	}

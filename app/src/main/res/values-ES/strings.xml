@@ -21,12 +21,16 @@
 	<string name = "descAlias">Alias del jugador</string>
 	<string name = "dialogAlias">Inserta un alias</string>
 	<string name = "defaultAliasP1">Jugador 1</string>
-	<string name = "textTime">Control de tiempo</string>
-	<string name = "descTime">Marca la casilla para limitar el tiempo de juego</string>
+	<string name = "textCbTime">Control de tiempo</string>
+	<string name = "descCbTime">Marca la casilla para limitar el tiempo de juego</string>
 	<string name = "textSizeGrid">Tamaño del tablero</string>
 	<string name = "descGridSize">Selecciona el tamaño NxN del tablero</string>
 	<string name = "dialogGridSize">Selecciona el tamaño del tablero</string>
 	<string name = "defaultGrid">7</string>
+	<string name = "textTime">Tiempo maximo</string>
+	<string name = "descTime">Introduce el tiempo maximp</string>
+	<string name = "dialogTime">Introduce el tiempo</string>
+	<string name = "defaultTime">30</string>
 
 	<!--- Game -->
 	<string name = "columnFilled">Columna llena</string>
@@ -89,4 +93,5 @@
 	<string name = "prefEtAlias">prefEtAlias</string>
 	<string name = "prefCbTime">prefCbTime</string>
 	<string name = "prefListGrid">prefListGrid</string>
+	<string name = "prefTime">prefTime</string>
 </resources>

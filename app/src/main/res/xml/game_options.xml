@@ -12,10 +12,21 @@
 		android:summary = "@string/descAlias"
 		android:title = "@string/textAlias"/>
 
-	<CheckBoxPreference
+	<SwitchPreference
 		android:defaultValue = "false"
-		android:icon = "@drawable/ic_clock"
+		android:icon = "@drawable/ic_timer"
 		android:key = "@string/prefCbTime"
+		android:summary = "@string/descCbTime"
+		android:title = "@string/textCbTime"/>
+
+	<EditTextPreference
+		android:defaultValue = "@string/defaultTime"
+		android:dialogTitle = "@string/dialogTime"
+		android:icon = "@drawable/ic_max_time"
+		android:key = "@string/prefTime"
+		android:selectAllOnFocus = "true"
+		android:singleLine = "true"
+		android:inputType="number"
 		android:summary = "@string/descTime"
 		android:title = "@string/textTime"/>
 

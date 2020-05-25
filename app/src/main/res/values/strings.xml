@@ -17,16 +17,24 @@
 
 	<!--- Configuration -->
 	<string name = "textMenuOptions">Options</string>
+
 	<string name = "textAlias">Alias</string>
 	<string name = "descAlias">Player alias</string>
 	<string name = "dialogAlias">Insert alias</string>
 	<string name = "defaultAliasP1">Player 1</string>
-	<string name = "textTime">Time control</string>
-	<string name = "descTime">Check to limit the game time</string>
+
+	<string name = "textCbTime">Time control</string>
+	<string name = "descCbTime">Check to limit the game time</string>
+
 	<string name = "textSizeGrid">Grid size</string>
 	<string name = "descGridSize">Select the NxN grid size</string>
 	<string name = "dialogGridSize">Select the grid size</string>
 	<string name = "defaultGrid">7</string>
+
+	<string name = "textTime">Maximun time</string>
+	<string name = "descTime">Input de maximum time</string>
+	<string name = "dialogTime">Insert time</string>
+	<string name = "defaultTime">30</string>
 
 	<!--- Game -->
 	<string name = "columnFilled">Column filled</string>
@@ -90,4 +98,6 @@
 	<string name = "prefEtAlias">prefEtAlias</string>
 	<string name = "prefCbTime">prefCbTime</string>
 	<string name = "prefListGrid">prefListGrid</string>
+	<string name = "prefTime">prefTime</string>
+
 </resources>
