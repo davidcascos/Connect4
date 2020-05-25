@@ -53,15 +53,16 @@ public class DBManager {
 		return cursor;
 	}
 
-//	public int update(long _id, String name, String desc) {
-//		ContentValues contentValues = new ContentValues();
-//		contentValues.put(DatabaseHelper.SUBJECT, name);
-//		contentValues.put(DatabaseHelper.DESC, desc);
-//		int i = database.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper._ID + " = " + _id, null);
-//		return i;
-//	}
-//
-//	public void delete(long _id) {
-//		database.delete(DatabaseHelper.TABLE_NAME, DatabaseHelper._ID + "=" + _id, null);
-//	}
+	public Cursor getCursorByName(String[] columns, String value) {
+		Cursor cursor = db.query(DBHelper.TABLE_NAME, columns, "alias like ?", new String[]{value}, null, null, null);
+		if (cursor != null) {
+			cursor.moveToFirst();
+		}
+		return cursor;
+	}
+
+
+	public void delete(long _id) {
+		db.delete(DBHelper.TABLE_NAME, DBHelper._ID + "=" + _id, null);
+	}
 }

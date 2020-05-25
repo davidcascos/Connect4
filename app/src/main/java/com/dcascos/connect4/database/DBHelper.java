@@ -5,7 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
-
 	// Database Information
 	static final String DB_NAME = "CONNECT4.DB";
 	// database version
@@ -22,7 +21,6 @@ public class DBHelper extends SQLiteOpenHelper {
 	public static final String RESULT = "result";
 	public static final String IMAGE = "image";
 
-
 	private static final String createTable = "CREATE TABLE " + TABLE_NAME
 			+ "(" + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ ALIAS + " VARCHAR, "
@@ -32,7 +30,6 @@ public class DBHelper extends SQLiteOpenHelper {
 			+ TIME + " TEXT, "
 			+ RESULT + " VARCHAR, "
 			+ IMAGE + " BLOB);";
-
 
 	public DBHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
