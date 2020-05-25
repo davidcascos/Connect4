@@ -45,11 +45,27 @@
 			android:textStyle = "bold|italic"/>
 	</LinearLayout>
 
+	<com.google.android.material.textfield.TextInputLayout
+		android:id = "@+id/ti_filter"
+		android:layout_width = "match_parent"
+		android:layout_height = "wrap_content"
+		android:layout_below = "@+id/linearTitle"
+		android:layout_marginTop = "10dp">
+
+		<com.google.android.material.textfield.TextInputEditText
+			android:id = "@+id/et_filter"
+			android:layout_width = "match_parent"
+			android:layout_height = "wrap_content"
+			android:hint = "@string/textAlias"
+			android:inputType = "text"
+			android:maxLines = "1"/>
+	</com.google.android.material.textfield.TextInputLayout>
+
 	<LinearLayout
 		android:id = "@+id/linearRegister"
 		android:layout_width = "match_parent"
 		android:layout_height = "match_parent"
-		android:layout_below = "@+id/linearTitle"
+		android:layout_below = "@+id/ti_filter"
 		android:baselineAligned = "false"
 		android:orientation = "horizontal"
 		android:padding = "10dp">
