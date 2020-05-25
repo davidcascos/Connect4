@@ -79,6 +79,12 @@
 	<string name = "keyTimePlayed">keyTimePlayed</string>
 	<string name = "keyStatus">keyStatus</string>
 	<string name = "keyLog">keyLog</string>
+	<string name = "keyAlias">keyAlias</string>
+	<string name = "keyDate">keyDate</string>
+	<string name = "keyGridSize">keyGridSize</string>
+	<string name = "keyCheck">keyCheck</string>
+	<string name = "keyTime">keyTime</string>
+	<string name = "keyResult">keyResult</string>
 
 	<!--- Preferences -->
 	<string name = "prefEtAlias">prefEtAlias</string>
