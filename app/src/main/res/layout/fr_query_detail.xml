@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:tools = "http://schemas.android.com/tools"
+	android:id = "@+id/fr_query_detail"
+	android:layout_width = "match_parent"
+	android:layout_height = "match_parent"
+	tools:context = ".fragments.QueryDetailFrag">
+
+	<LinearLayout
+		android:id = "@+id/linearGameDetail"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:layout_marginTop = "10dp"
+		android:orientation = "vertical">
+
+		<TextView
+			android:id = "@+id/tv_titleAlias"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "@string/descAlias"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "24sp"
+			android:textStyle = "bold|italic"/>
+
+		<TextView
+			android:id = "@+id/tv_alias"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "18sp"/>
+
+		<TextView
+			android:id = "@+id/tv_titleDate"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "@string/textDate"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "24sp"
+			android:textStyle = "bold|italic"/>
+
+		<TextView
+			android:id = "@+id/tv_date"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "18sp"/>
+
+		<TextView
+			android:id = "@+id/tv_titleGridSize"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "@string/textSizeGrid"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "24sp"
+			android:textStyle = "bold|italic"/>
+
+		<TextView
+			android:id = "@+id/tv_gridSize"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "18sp"/>
+
+		<TextView
+			android:id = "@+id/tv_titleTimeControl"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "@string/textTime"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "24sp"
+			android:textStyle = "bold|italic"/>
+
+		<TextView
+			android:id = "@+id/tv_timeControl"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "18sp"/>
+
+		<TextView
+			android:id = "@+id/tv_titleTime"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "@string/totalTime"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "24sp"
+			android:textStyle = "bold|italic"/>
+
+		<TextView
+			android:id = "@+id/tv_time"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "18sp"/>
+
+		<TextView
+			android:id = "@+id/tv_titleResult"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "@string/titleResult"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "24sp"
+			android:textStyle = "bold|italic"/>
+
+		<TextView
+			android:id = "@+id/tv_result"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "18sp"/>
+	</LinearLayout>
+</RelativeLayout>

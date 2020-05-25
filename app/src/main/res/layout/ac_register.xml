@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android = "http://schemas.android.com/apk/res/android"
+	xmlns:app = "http://schemas.android.com/apk/res-auto"
+	xmlns:tools = "http://schemas.android.com/tools"
+	android:id = "@+id/ac_register"
+	android:layout_width = "match_parent"
+	android:layout_height = "match_parent"
+	android:layout_marginLeft = "40dp"
+	android:layout_marginRight = "40dp"
+	tools:context = ".layouts.Register">
+
+	<ImageButton
+		android:id = "@+id/bt_back"
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
+		android:layout_alignParentLeft = "true"
+		android:layout_alignParentTop = "true"
+		android:layout_marginTop = "40dp"
+		android:background = "@color/background"
+		app:srcCompat = "@drawable/ic_back"/>
+
+	<LinearLayout
+		android:id = "@+id/linearTitle"
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
+		android:layout_centerHorizontal = "true"
+		android:layout_marginTop = "80dp"
+		android:orientation = "horizontal">
+
+		<ImageView
+			android:id = "@+id/iv_register"
+			android:layout_width = "50dp"
+			android:layout_height = "match_parent"
+			android:layout_marginRight = "10dp"
+			android:src = "@drawable/iv_register"/>
+
+		<TextView
+			android:id = "@+id/tv_titleRegister"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:text = "@string/titleRegister"
+			android:textColor = "@color/textColorDark"
+			android:textSize = "36sp"
+			android:textStyle = "bold|italic"/>
+	</LinearLayout>
+
+	<fragment
+		android:id = "@+id/fr_query"
+		android:name = "com.dcascos.connect4.fragments.QueryFrag"
+		android:layout_width = "match_parent"
+		android:layout_height = "match_parent"
+		android:layout_below = "@+id/linearTitle"
+		android:layout_centerHorizontal = "true"
+		android:layout_marginTop = "20dp"
+		android:layout_marginBottom = "20dp"
+		tools:layout = "@layout/fr_query"/>
+</RelativeLayout>

@@ -24,5 +24,13 @@
 		</activity>
 		<activity android:name = ".layouts.BoardGame">
 		</activity>
+		<activity
+			android:name = ".layouts.Results"
+			android:configChanges = "orientation|keyboardHidden|screenSize">
+		</activity>
+		<activity android:name = ".layouts.Register">
+		</activity>
+		<activity android:name = ".layouts.QueryDetail">
+		</activity>
 	</application>
 </manifest>
