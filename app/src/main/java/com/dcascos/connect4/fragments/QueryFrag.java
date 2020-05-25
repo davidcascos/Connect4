@@ -25,7 +25,12 @@ import com.dcascos.connect4.logic.Status;
 
 public class QueryFrag extends Fragment {
 	private SimpleCursorAdapter simpleCursorAdapter;
-	ListView lv_register;
+
+	DBManager dbManager;
+
+	private final String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
+	private final String[] from = new String[]{DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
+	private final int[] to = new int[]{R.id.tv_alias, R.id.tv_date, R.id.tv_result, R.id.iv_register};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,16 +46,12 @@ public class QueryFrag extends Fragment {
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		lv_register = getView().findViewById(R.id.lv_register);
+		ListView lv_register = getView().findViewById(R.id.lv_register);
 		lv_register.setTextFilterEnabled(true);
 
-		DBManager dbManager = new DBManager(getActivity());
+		dbManager = new DBManager(getActivity());
 		dbManager.openRead();
-		String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
 		Cursor cursor = dbManager.getCursor(columns);
-
-		final String[] from = new String[]{DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
-		final int[] to = new int[]{R.id.tv_alias, R.id.tv_date, R.id.tv_result, R.id.iv_register};
 
 		simpleCursorAdapter = new SimpleCursorAdapter(getActivity(), R.layout.layout_card, cursor, from, to, 0);
 
@@ -58,34 +59,10 @@ public class QueryFrag extends Fragment {
 		lv_register.setAdapter(simpleCursorAdapter);
 		dbManager.close();
 
-
-		EditText editText = getActivity().findViewById(R.id.et_filter);
-
-		editText.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-			}
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-			}
-
-			@Override
-			public void afterTextChanged(Editable s) {
-				lv_register = getView().findViewById(R.id.lv_register);
-				SimpleCursorAdapter filterAdapter = (SimpleCursorAdapter) lv_register.getAdapter();
-				filterAdapter.getFilter().filter(s.toString());
-			}
-		});
-
-		simpleCursorAdapter.setFilterQueryProvider(new FilterQueryProvider() {
-			@Override
-			public Cursor runQuery(CharSequence constraint) {
-				return getDirectoryList(constraint);
-			}
-		});
+		prepareFilter();
 	}
 
-	public void putValuesInView() {
+	private void putValuesInView() {
 		simpleCursorAdapter.setViewBinder(new SimpleCursorAdapter.ViewBinder() {
 			@Override
 			public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
@@ -144,10 +121,34 @@ public class QueryFrag extends Fragment {
 		});
 	}
 
-	public Cursor getDirectoryList(CharSequence constraint) {
-		DBManager dbManager = new DBManager(getActivity());
+	private void prepareFilter() {
+		EditText editText = getActivity().findViewById(R.id.et_filter);
+
+		editText.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				simpleCursorAdapter.getFilter().filter(s.toString());
+			}
+		});
+
+		simpleCursorAdapter.setFilterQueryProvider(new FilterQueryProvider() {
+			@Override
+			public Cursor runQuery(CharSequence constraint) {
+				return getItemsByAlias(constraint);
+			}
+		});
+	}
+
+	private Cursor getItemsByAlias(CharSequence constraint) {
 		dbManager.openRead();
-		String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
 		if (constraint == null || constraint.length() == 0) {
 			return dbManager.getCursor(columns);
 		} else {
