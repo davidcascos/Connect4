@@ -1,6 +1,7 @@
 package com.dcascos.connect4.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,10 +25,11 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.dcascos.connect4.R;
+import com.dcascos.connect4.layouts.Results;
 import com.dcascos.connect4.logic.Game;
 import com.dcascos.connect4.logic.Position;
 import com.dcascos.connect4.logic.Status;
-import com.dcascos.connect4.utils.DBManager;
+import com.dcascos.connect4.database.DBManager;
 import com.dcascos.connect4.utils.ImageAdapter;
 
 import java.io.ByteArrayOutputStream;
@@ -89,7 +91,6 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 			timeLeftInMilliseconds = savedInstanceState.getLong(getString(R.string.keyMillisLeft));
 			timePlayed = savedInstanceState.getLong(getString(R.string.keyTimePlayed));
 			startChronometer();
-
 		} else {
 			game = new Game(gridSize);
 
@@ -205,17 +206,15 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 		onStateChangeListener.onStateChanged(position, initThrow, finishThrow, remainingTime);
 	}
 
-
 	private void checkEndGame() {
 		if (game.checkForFinish()) {
 			ch_time.stop();
 			saveOnDB();
-			Toast.makeText(getActivity(), "todo ok", Toast.LENGTH_LONG).show();
-			//Intent intent = new Intent(getActivity(), Results.class);
-			//intent.putExtra(getString(R.string.keyTimePlayed), ch_time.getText().toString());
-			//intent.putExtra(getString(R.string.keyStatus), game.getStatus().toString());
-			//startActivity(intent);
-			//Objects.requireNonNull(getActivity()).finish();
+			Intent intent = new Intent(getActivity(), Results.class);
+			intent.putExtra(getString(R.string.keyTimePlayed), ch_time.getText().toString());
+			intent.putExtra(getString(R.string.keyStatus), game.getStatus().toString());
+			startActivity(intent);
+			Objects.requireNonNull(getActivity()).finish();
 		}
 	}
 
@@ -226,8 +225,12 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 		String result = game.getStatus().toString();
 		byte[] imageInByte = setImageOfState();
 
-		dbManager.open();
-		dbManager.insert(alias, actualDate, gridSize, timeControl, timePlayed, result, imageInByte);
+		dbManager.openWrite();
+		try {
+			dbManager.insert(alias, actualDate, gridSize, timeControl, timePlayed, result, imageInByte);
+		} catch (Exception e) {
+			Toast.makeText(getActivity(), getString(R.string.toastErrorSave), Toast.LENGTH_SHORT).show();
+		}
 		dbManager.close();
 	}
 
@@ -264,7 +267,6 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 		//Save time
 		outState.putLong(getString(R.string.keyMillisLeft), timeLeftInMilliseconds);
 		outState.putLong(getString(R.string.keyTimePlayed), ch_time.getBase());
-
 	}
 }
 

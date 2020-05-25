@@ -53,6 +53,8 @@ public class MainMenu extends AppCompatActivity implements PopupMenu.OnMenuItemC
 			@Override
 			public void onClick(View v) {
 				clickSound.start();
+				Intent intent = new Intent(MainMenu.this, Register.class);
+				startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MainMenu.this).toBundle());
 			}
 		});
 
