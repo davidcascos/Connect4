@@ -15,9 +15,9 @@ public class Rules extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.ac_rules);
+		final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.click);
 
 		ImageButton bt_back = findViewById(R.id.bt_back);
-		final MediaPlayer clickSound = MediaPlayer.create(this, R.raw.click);
 
 		bt_back.setOnClickListener(new View.OnClickListener() {
 			@Override

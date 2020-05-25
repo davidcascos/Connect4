@@ -1,32 +1,31 @@
 package com.dcascos.connect4.fragments;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.FilterQueryProvider;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.ListFragment;
+import androidx.fragment.app.Fragment;
 
 import com.dcascos.connect4.R;
 import com.dcascos.connect4.database.DBHelper;
 import com.dcascos.connect4.database.DBManager;
 import com.dcascos.connect4.logic.Status;
 
-public class QueryFrag extends ListFragment {
+public class QueryFrag extends Fragment {
 	private SimpleCursorAdapter simpleCursorAdapter;
-
-	private OnItemSelectedListener onItemSelectedListener;
-
-	public interface OnItemSelectedListener {
-		void onItemSelected(long id);
-	}
+	ListView lv_register;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,8 +33,16 @@ public class QueryFrag extends ListFragment {
 	}
 
 	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		return inflater.inflate(R.layout.fr_query, container, false);
+	}
+
+	@Override
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+
+		lv_register = getView().findViewById(R.id.lv_register);
+		lv_register.setTextFilterEnabled(true);
 
 		DBManager dbManager = new DBManager(getActivity());
 		dbManager.openRead();
@@ -45,11 +52,37 @@ public class QueryFrag extends ListFragment {
 		final String[] from = new String[]{DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
 		final int[] to = new int[]{R.id.tv_alias, R.id.tv_date, R.id.tv_result, R.id.iv_register};
 
-		simpleCursorAdapter = new SimpleCursorAdapter(getActivity(), R.layout.fr_query, cursor, from, to, 0);
+		simpleCursorAdapter = new SimpleCursorAdapter(getActivity(), R.layout.layout_card, cursor, from, to, 0);
 
 		putValuesInView();
-		setListAdapter(simpleCursorAdapter);
+		lv_register.setAdapter(simpleCursorAdapter);
 		dbManager.close();
+
+
+		EditText editText = getActivity().findViewById(R.id.et_filter);
+
+		editText.addTextChangedListener(new TextWatcher() {
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			}
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before, int count) {
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				lv_register = getView().findViewById(R.id.lv_register);
+				SimpleCursorAdapter filterAdapter = (SimpleCursorAdapter) lv_register.getAdapter();
+				filterAdapter.getFilter().filter(s.toString());
+			}
+		});
+
+		simpleCursorAdapter.setFilterQueryProvider(new FilterQueryProvider() {
+			@Override
+			public Cursor runQuery(CharSequence constraint) {
+				return getDirectoryList(constraint);
+			}
+		});
 	}
 
 	public void putValuesInView() {
@@ -111,16 +144,16 @@ public class QueryFrag extends ListFragment {
 		});
 	}
 
-	@Override
-	public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
-		super.onListItemClick(l, v, position, id);
-		onItemSelectedListener.onItemSelected(id);
-	}
-
-	@Override
-	public void onAttach(@NonNull Context context) {
-		super.onAttach(context);
-		onItemSelectedListener = (OnItemSelectedListener) context;
+	public Cursor getDirectoryList(CharSequence constraint) {
+		DBManager dbManager = new DBManager(getActivity());
+		dbManager.openRead();
+		String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
+		if (constraint == null || constraint.length() == 0) {
+			return dbManager.getCursor(columns);
+		} else {
+			String value = "%" + constraint.toString() + "%";
+			return dbManager.getCursorByName(columns, value);
+		}
 	}
 }
 

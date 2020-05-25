@@ -33,7 +33,6 @@ public class Results extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 	private EditText et_date;
 	private EditText et_mail;
 	private EditText et_log;
-
 	//Preferences
 	private String alias;
 	private int gridSize;
@@ -117,7 +116,7 @@ public class Results extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 		final MediaPlayer lose = MediaPlayer.create(getApplicationContext(), R.raw.lose);
 
 		LayoutInflater inflater = getLayoutInflater();
-		View layout = inflater.inflate(R.layout.toast_layout, (ViewGroup) findViewById(R.id.toast_layout));
+		View layout = inflater.inflate(R.layout.layout_toast, (ViewGroup) findViewById(R.id.toast_layout));
 		ImageView iv_toast = layout.findViewById(R.id.iv_toast);
 		TextView tv_toast = layout.findViewById(R.id.tv_toast);
 

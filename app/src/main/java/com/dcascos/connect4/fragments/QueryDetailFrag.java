@@ -67,7 +67,10 @@ public class QueryDetailFrag extends Fragment {
 		dbManager.openRead();
 		String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.SIZE, DBHelper.TIMING, DBHelper.TIME, DBHelper.RESULT};
 		cursor = dbManager.getCursor(columns);
-		cursor.moveToPosition((int) id - 1);
+
+		if (cursor.moveToFirst()) {
+			cursor.moveToPosition((int) id - 1);
+		}
 
 		alias = cursor.getString(1);
 		date = cursor.getString(2);
