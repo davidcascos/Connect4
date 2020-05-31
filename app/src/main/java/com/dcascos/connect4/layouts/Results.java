@@ -100,7 +100,9 @@ public class Results extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 		});
 
 		getPreferencesAndExtras();
-		generateToastResult();
+		if (savedInstanceState == null) {
+			generateToastResult();
+		}
 		fillCamps();
 	}
 
