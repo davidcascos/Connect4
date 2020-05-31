@@ -37,10 +37,10 @@ public class Register extends AppCompatActivity {
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				QueryDetailFrag queryDetailFrag = (QueryDetailFrag) getSupportFragmentManager().findFragmentById(R.id.fr_query_detail);
 				if (queryDetailFrag != null && queryDetailFrag.isInLayout()) {
-					queryDetailFrag.showDetails(id);
+					queryDetailFrag.showDetails(position);
 				} else {
 					Intent intent = new Intent(Register.this, QueryDetail.class);
-					intent.putExtra(getString(R.string.keyItemId), id);
+					intent.putExtra(getString(R.string.keyItemPosition), position);
 					startActivity(intent);
 				}
 			}

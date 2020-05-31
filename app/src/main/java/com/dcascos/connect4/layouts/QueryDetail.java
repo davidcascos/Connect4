@@ -28,7 +28,7 @@ public class QueryDetail extends AppCompatActivity {
 			}
 		});
 
-		long itemId = getIntent().getLongExtra(getString(R.string.keyItemId), 1);
+		int itemId = getIntent().getIntExtra(getString(R.string.keyItemPosition), 1);
 
 		QueryDetailFrag queryDetailFrag = (QueryDetailFrag) getSupportFragmentManager().findFragmentById(R.id.fr_query_detail);
 		queryDetailFrag.showDetails(itemId);

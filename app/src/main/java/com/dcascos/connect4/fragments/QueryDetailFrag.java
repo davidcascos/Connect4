@@ -62,14 +62,14 @@ public class QueryDetailFrag extends Fragment {
 		}
 	}
 
-	public void showDetails(long id) {
+	public void showDetails(int position) {
 		DBManager dbManager = new DBManager(getActivity());
 		dbManager.openRead();
 		String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.SIZE, DBHelper.TIMING, DBHelper.TIME, DBHelper.RESULT};
 		cursor = dbManager.getCursor(columns);
 
 		if (cursor.moveToFirst()) {
-			cursor.moveToPosition((int) id - 1);
+			cursor.moveToPosition(position);
 		}
 
 		alias = cursor.getString(1);
