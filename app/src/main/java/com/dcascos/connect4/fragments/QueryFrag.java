@@ -1,5 +1,6 @@
 package com.dcascos.connect4.fragments;
 
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -8,14 +9,17 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.FilterQueryProvider;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.dcascos.connect4.R;
@@ -50,16 +54,42 @@ public class QueryFrag extends Fragment {
 		lv_register.setTextFilterEnabled(true);
 
 		dbManager = new DBManager(getActivity());
-		dbManager.openRead();
+		dbManager.openWrite();
 		Cursor cursor = dbManager.getCursor(columns);
 
 		simpleCursorAdapter = new SimpleCursorAdapter(getActivity(), R.layout.layout_card, cursor, from, to, 0);
 
 		putValuesInView();
 		lv_register.setAdapter(simpleCursorAdapter);
-		dbManager.close();
-
 		prepareFilter();
+
+		lv_register.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+				showDialog(id);
+				return true;
+			}
+		});
+	}
+
+	private void showDialog(final long id) {
+		new AlertDialog.Builder(getActivity())
+				.setTitle(R.string.dialogTitleDelete)
+				.setMessage(R.string.dialogMessageDelete)
+				.setPositiveButton(R.string.True, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dbManager.delete(id);
+						simpleCursorAdapter.swapCursor(dbManager.getCursor(columns));
+						simpleCursorAdapter.notifyDataSetChanged();
+						Toast.makeText(getActivity(), getString(R.string.toastDelete), Toast.LENGTH_SHORT).show();
+					}
+				})
+				.setNegativeButton(R.string.False, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				}).show();
 	}
 
 	private void putValuesInView() {
@@ -155,6 +185,12 @@ public class QueryFrag extends Fragment {
 			String value = "%" + constraint.toString() + "%";
 			return dbManager.getCursorByName(columns, value);
 		}
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		dbManager.close();
 	}
 }
 

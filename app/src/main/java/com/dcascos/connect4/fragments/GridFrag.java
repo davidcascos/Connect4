@@ -60,6 +60,8 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 	private String initThrow;
 	private String finishThrow;
 
+	private boolean gameEnd = false;
+
 	private OnStateChangedListener onStateChangeListener;
 
 	public interface OnStateChangedListener {
@@ -69,6 +71,7 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setRetainInstance(true);
 		getPreferences();
 	}
 
@@ -179,7 +182,10 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 			@Override
 			public void onFinish() {
 				game.setStatus(Status.ALL_PLAYER_LOSE);
-				checkEndGame();
+				if (!gameEnd) {
+					checkEndGame();
+					gameEnd = true;
+				}
 			}
 		}.start();
 	}
