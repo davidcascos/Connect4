@@ -34,6 +34,7 @@ import com.dcascos.connect4.utils.ImageAdapter;
 
 import java.io.ByteArrayOutputStream;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
@@ -98,9 +99,7 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 			game = new Game(gridSize);
 
 			tokens = new int[gridSize * gridSize];
-			for (int i = 0; i < tokens.length; i++) {
-				tokens[i] = R.drawable.token_empty;
-			}
+			Arrays.fill(tokens, R.drawable.token_empty);
 
 			timeLeftInMilliseconds = (maximumTime * 1000) + 1000; //30 seg
 		}
@@ -111,7 +110,7 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		final MediaPlayer tokenSound = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.token);
+		final MediaPlayer tokenSound = MediaPlayer.create(Objects.requireNonNull(getActivity()).getApplicationContext(), R.raw.token);
 		tokenSound.start();
 
 		//Calculate column where put new token and move it
@@ -160,12 +159,12 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 			startCountDownTimer();
 		} else {
 			tv_time.setVisibility(View.INVISIBLE);
-			ch_time.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorNoTiming));
+			ch_time.setTextColor(ContextCompat.getColor(Objects.requireNonNull(getActivity()), R.color.colorNoTiming));
 		}
 	}
 
 	private void startCountDownTimer() {
-		ch_time.setTextColor(ContextCompat.getColor(getActivity(), R.color.invisible));
+		ch_time.setTextColor(ContextCompat.getColor(Objects.requireNonNull(getActivity()), R.color.invisible));
 		tv_time.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorTiming));
 		CountDownTimer countDownTimer = new CountDownTimer(timeLeftInMilliseconds, 1000) {
 			@Override
@@ -184,7 +183,6 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 				game.setStatus(Status.ALL_PLAYER_LOSE);
 				if (!gameEnd) {
 					checkEndGame();
-					gameEnd = true;
 				}
 			}
 		}.start();
@@ -199,7 +197,7 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 
 	private void playsOpposite() {
 		iv_token.setImageResource(R.drawable.token_yellow);
-		final MediaPlayer tokenSound = MediaPlayer.create(getActivity().getApplicationContext(), R.raw.token);
+		final MediaPlayer tokenSound = MediaPlayer.create(Objects.requireNonNull(getActivity()).getApplicationContext(), R.raw.token);
 		tokenSound.start();
 		Position opponentPosition = game.playOpponent();
 		tokens[gridSize * opponentPosition.getRow() + opponentPosition.getColumn()] = R.drawable.token_yellow;
@@ -214,6 +212,7 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 
 	private void checkEndGame() {
 		if (game.checkForFinish()) {
+			gameEnd = true;
 			ch_time.stop();
 			saveOnDB();
 			Intent intent = new Intent(getActivity(), Results.class);
