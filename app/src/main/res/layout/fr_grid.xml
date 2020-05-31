@@ -11,10 +11,11 @@
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content"
 		android:layout_centerHorizontal = "true"
+		android:layout_marginStart = "40dp"
 		android:layout_marginTop = "40dp"
 		android:layout_marginEnd = "40dp"
-		android:orientation = "horizontal"
-		android:baselineAligned = "false">
+		android:baselineAligned = "false"
+		android:orientation = "horizontal">
 
 		<LinearLayout
 			android:id = "@+id/linearTurn"
@@ -46,6 +47,7 @@
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
 			android:layout_weight = "1"
+			android:gravity = "end"
 			android:orientation = "horizontal">
 
 			<ImageView
@@ -77,24 +79,15 @@
 		</LinearLayout>
 	</LinearLayout>
 
-
-<!--	<com.dcascos.connect4.utils.SquareLayout
-		android:id = "@+id/text"
-		android:layout_width = "match_parent"
+	<GridView
+		android:id = "@+id/grid_view"
+		android:layout_width = "wrap_content"
 		android:layout_height = "wrap_content"
-		android:layout_alignParentBottom = "true"
-		android:layout_centerInParent = "true">-->
-
-		<GridView
-			android:id = "@+id/grid_view"
-			android:layout_width = "match_parent"
-			android:layout_height = "wrap_content"
-			android:layout_alignParentBottom = "true"
-			android:layout_centerHorizontal = "true"
-			android:layout_gravity = "bottom"
-			android:background = "@color/colorGrid"
-			android:gravity = "center"/>
-<!--	</com.dcascos.connect4.utils.SquareLayout>-->
-
+		android:layout_below = "@id/linearInfo"
+		android:layout_centerHorizontal = "true"
+		android:layout_gravity = "bottom"
+		android:layout_marginTop = "80dp"
+		android:background = "@color/colorGrid"
+		android:gravity = "center"/>
 
 </RelativeLayout>
