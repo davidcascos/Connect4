@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.dcascos.connect4.R;
 import com.dcascos.connect4.fragments.QueryDetailFrag;
 
+import java.util.Objects;
+
 public class QueryDetail extends AppCompatActivity {
 
 	@Override
@@ -31,6 +33,6 @@ public class QueryDetail extends AppCompatActivity {
 		int itemId = getIntent().getIntExtra(getString(R.string.keyItemPosition), 1);
 
 		QueryDetailFrag queryDetailFrag = (QueryDetailFrag) getSupportFragmentManager().findFragmentById(R.id.fr_query_detail);
-		queryDetailFrag.showDetails(itemId);
+		Objects.requireNonNull(queryDetailFrag).showDetails(itemId);
 	}
 }

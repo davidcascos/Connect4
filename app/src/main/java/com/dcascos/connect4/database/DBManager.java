@@ -9,23 +9,21 @@ import android.database.sqlite.SQLiteDatabase;
 public class DBManager {
 
 	private DBHelper dbHelper;
-	private Context context;
+	private final Context context;
 	private SQLiteDatabase db;
 
 	public DBManager(Context c) {
 		context = c;
 	}
 
-	public DBManager openWrite() throws SQLException {
+	public void openWrite() throws SQLException {
 		dbHelper = new DBHelper(context);
 		db = dbHelper.getWritableDatabase();
-		return this;
 	}
 
-	public DBManager openRead() throws SQLException {
+	public void openRead() throws SQLException {
 		dbHelper = new DBHelper(context);
 		db = dbHelper.getReadableDatabase();
-		return this;
 	}
 
 	public void close() {
@@ -60,7 +58,6 @@ public class DBManager {
 		}
 		return cursor;
 	}
-
 
 	public void delete(long _id) {
 		db.delete(DBHelper.TABLE_NAME, DBHelper._ID + "=" + _id, null);

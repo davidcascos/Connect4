@@ -8,7 +8,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class ImageAdapter extends BaseAdapter {
-	private Context mContext;
+	private final Context mContext;
 	private int[] tokens;
 
 	public ImageAdapter(Context c, int[] tokens) {

@@ -30,7 +30,7 @@
 	<string name = "descGridSize">Selecciona el tamaño NxN del tablero</string>
 	<string name = "dialogGridSize">Selecciona el tamaño del tablero</string>
 	<string name = "defaultGrid">7</string>
-	<string name = "textTime">Tiempo maximo</string>
+	<string name = "textTime">Tiempo máximo</string>
 	<string name = "descTime">Introduce el tiempo maximp</string>
 	<string name = "dialogTime">Introduce el tiempo</string>
 	<string name = "defaultTime">30</string>
@@ -43,7 +43,6 @@
 	<string name = "toastLose">Has perdido!</string>
 	<string name = "toastDraw">Empate!</string>
 	<string name = "toastEndTime">Se ha acabado el tiempo!</string>
-	<string name = "toastCorrectSave">Datos guardados correctamente en la BD</string>
 	<string name = "toastErrorSave">Error al guardar los datos en la DB</string>
 
 	<!--- Game Log -->
@@ -78,9 +77,7 @@
 	<!--- Keys -->
 	<string name = "keyTokenPositions">keyTokenPositions</string>
 	<string name = "keyGame">keyGame</string>
-	<string name = "keyTimeControl">keyTimeControl</string>
 	<string name = "keyMillisLeft">keyMillisLeft</string>
-	<string name = "keyText">keyText</string>
 	<string name = "keyItemPosition">keyItemPosition</string>
 	<string name = "keyTimePlayed">keyTimePlayed</string>
 	<string name = "keyStatus">keyStatus</string>
@@ -99,6 +96,7 @@
 	<string name = "prefTime">prefTime</string>
 
 	<!--- Register -->
+	<string name = "deleteInstrucion">Para eliminar una partida manten presionado el registro</string>
 	<string name = "dialogTitleDelete">Eliminar partida</string>
 	<string name = "dialogMessageDelete">Estas seguro que deseas eliminar esta partida?</string>
 	<string name = "toastDelete">Partida eliminada</string>

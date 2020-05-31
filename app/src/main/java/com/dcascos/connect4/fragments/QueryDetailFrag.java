@@ -19,7 +19,6 @@ import com.dcascos.connect4.logic.Status;
 import java.util.Objects;
 
 public class QueryDetailFrag extends Fragment {
-	private Cursor cursor;
 	private TextView tv_alias;
 	private TextView tv_date;
 	private TextView tv_gridSize;
@@ -34,7 +33,6 @@ public class QueryDetailFrag extends Fragment {
 	private String check;
 	private String time;
 	private String result;
-	private String status;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -66,7 +64,7 @@ public class QueryDetailFrag extends Fragment {
 		DBManager dbManager = new DBManager(getActivity());
 		dbManager.openRead();
 		String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.SIZE, DBHelper.TIMING, DBHelper.TIME, DBHelper.RESULT};
-		cursor = dbManager.getCursor(columns);
+		Cursor cursor = dbManager.getCursor(columns);
 
 		if (cursor.moveToFirst()) {
 			cursor.moveToPosition(position);
@@ -77,7 +75,7 @@ public class QueryDetailFrag extends Fragment {
 		gridSize = String.valueOf(cursor.getInt(3));
 		check = cursor.getInt(4) != 0 ? getString(R.string.True) : getString(R.string.False);
 		time = cursor.getString(5);
-		status = cursor.getString(6);
+		String status = cursor.getString(6);
 
 		if (status.equals(Status.PLAYER1_WINS.toString())) {
 			result = getString(R.string.victory);

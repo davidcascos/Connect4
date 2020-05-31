@@ -17,7 +17,7 @@
 			android:id = "@+id/iv_rules"
 			android:layout_width = "50dp"
 			android:layout_height = "match_parent"
-			android:layout_marginRight = "10dp"
+			android:layout_marginEnd = "10dp"
 			android:src = "@drawable/iv_detail"/>
 
 		<TextView
@@ -46,6 +46,5 @@
 		android:layout_centerVertical = "true"
 		android:layout_marginTop = "20dp"
 		android:transcriptMode = "alwaysScroll">
-
 	</ListView>
 </RelativeLayout>

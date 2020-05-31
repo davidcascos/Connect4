@@ -27,6 +27,8 @@ import com.dcascos.connect4.database.DBHelper;
 import com.dcascos.connect4.database.DBManager;
 import com.dcascos.connect4.logic.Status;
 
+import java.util.Objects;
+
 public class QueryFrag extends Fragment {
 	private SimpleCursorAdapter simpleCursorAdapter;
 
@@ -50,7 +52,7 @@ public class QueryFrag extends Fragment {
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 
-		ListView lv_register = getView().findViewById(R.id.lv_register);
+		ListView lv_register = Objects.requireNonNull(getView()).findViewById(R.id.lv_register);
 		lv_register.setTextFilterEnabled(true);
 
 		dbManager = new DBManager(getActivity());
@@ -73,7 +75,7 @@ public class QueryFrag extends Fragment {
 	}
 
 	private void showDialog(final long id) {
-		new AlertDialog.Builder(getActivity())
+		new AlertDialog.Builder(Objects.requireNonNull(getActivity()))
 				.setTitle(R.string.dialogTitleDelete)
 				.setMessage(R.string.dialogMessageDelete)
 				.setPositiveButton(R.string.True, new DialogInterface.OnClickListener() {
@@ -152,7 +154,7 @@ public class QueryFrag extends Fragment {
 	}
 
 	private void prepareFilter() {
-		EditText editText = getActivity().findViewById(R.id.et_filter);
+		EditText editText = Objects.requireNonNull(getActivity()).findViewById(R.id.et_filter);
 
 		editText.addTextChangedListener(new TextWatcher() {
 			@Override
@@ -193,4 +195,3 @@ public class QueryFrag extends Fragment {
 		dbManager.close();
 	}
 }
-

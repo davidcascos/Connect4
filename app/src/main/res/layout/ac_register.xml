@@ -14,7 +14,7 @@
 		android:id = "@+id/bt_back"
 		android:layout_width = "wrap_content"
 		android:layout_height = "wrap_content"
-		android:layout_alignParentLeft = "true"
+		android:layout_alignParentStart = "true"
 		android:layout_alignParentTop = "true"
 		android:layout_marginTop = "40dp"
 		android:background = "@color/background"
@@ -32,7 +32,7 @@
 			android:id = "@+id/iv_register"
 			android:layout_width = "50dp"
 			android:layout_height = "match_parent"
-			android:layout_marginRight = "10dp"
+			android:layout_marginEnd = "10dp"
 			android:src = "@drawable/iv_register"/>
 
 		<TextView
@@ -61,12 +61,22 @@
 			android:maxLines = "1"/>
 	</com.google.android.material.textfield.TextInputLayout>
 
+	<TextView
+		android:id = "@+id/tv_deleteInstrucion"
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
+		android:layout_below = "@+id/ti_filter"
+		android:text = "@string/deleteInstrucion"
+		android:textColor = "@color/textColorDark"
+		android:textSize = "14sp"
+		android:textStyle = "italic"/>
+
 	<fragment
 		android:id = "@+id/fr_query"
 		android:name = "com.dcascos.connect4.fragments.QueryFrag"
 		android:layout_width = "match_parent"
 		android:layout_height = "match_parent"
-		android:layout_below = "@+id/ti_filter"
+		android:layout_below = "@+id/tv_deleteInstrucion"
 		android:layout_centerHorizontal = "true"
 		android:layout_marginTop = "10dp"
 		android:layout_marginBottom = "20dp"
