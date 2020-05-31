@@ -3,6 +3,9 @@
 	<string name = "app_name">Connect4</string>
 	<string name = "developed_by">Desarrollado por David Cascos©</string>
 
+	<string name = "dialogTitle">Estas saliendo de la aplicación</string>
+	<string name = "dialogMessage">Estas seguro que quieres cerrar la aplicación?</string>
+
 	<!--- Main Menu -->
 	<string name = "bt_play">Jugar</string>
 	<string name = "bt_rules">Reglas</string>
@@ -94,4 +97,9 @@
 	<string name = "prefCbTime">prefCbTime</string>
 	<string name = "prefListGrid">prefListGrid</string>
 	<string name = "prefTime">prefTime</string>
+
+	<!--- Register -->
+	<string name = "dialogTitleDelete">Eliminar partida</string>
+	<string name = "dialogMessageDelete">Estas seguro que deseas eliminar esta partida?</string>
+	<string name = "toastDelete">Partida eliminada</string>
 </resources>

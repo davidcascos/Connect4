@@ -1,6 +1,7 @@
 package com.dcascos.connect4.layouts;
 
 import android.app.ActivityOptions;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -19,6 +20,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dcascos.connect4.R;
@@ -93,7 +95,7 @@ public class Results extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 			@Override
 			public void onClick(View v) {
 				clickSound.start();
-				finish();
+				showDialog();
 			}
 		});
 
@@ -156,6 +158,23 @@ public class Results extends AppCompatActivity implements PopupMenu.OnMenuItemCl
 		et_date.setText(new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date()));
 		et_log.setText(logText);
 		et_mail.setText(R.string.defaultMail);
+	}
+
+	private void showDialog() {
+		new AlertDialog.Builder(this)
+				.setTitle(R.string.dialogTitle)
+				.setMessage(R.string.dialogMessage)
+				.setPositiveButton(R.string.True, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						finish();
+					}
+				})
+				.setNegativeButton(R.string.False, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				}).show();
 	}
 
 	public void showConfMenu(View v) {

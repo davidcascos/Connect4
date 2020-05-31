@@ -3,6 +3,9 @@
 	<string name = "app_name">Connect4</string>
 	<string name = "developed_by">Developed by David Cascos©</string>
 
+	<string name = "dialogTitle">You are closing the application</string>
+	<string name = "dialogMessage">Are you sure you want to close the application?</string>
+
 	<!--- Main Menu -->
 	<string name = "bt_play">Play</string>
 	<string name = "bt_rules">Rules</string>
@@ -17,20 +20,16 @@
 
 	<!--- Configuration -->
 	<string name = "textMenuOptions">Options</string>
-
 	<string name = "textAlias">Alias</string>
 	<string name = "descAlias">Player alias</string>
 	<string name = "dialogAlias">Insert alias</string>
 	<string name = "defaultAliasP1">Player 1</string>
-
 	<string name = "textCbTime">Time control</string>
 	<string name = "descCbTime">Check to limit the game time</string>
-
 	<string name = "textSizeGrid">Grid size</string>
 	<string name = "descGridSize">Select the NxN grid size</string>
 	<string name = "dialogGridSize">Select the grid size</string>
 	<string name = "defaultGrid">7</string>
-
 	<string name = "textTime">Maximun time</string>
 	<string name = "descTime">Input de maximum time</string>
 	<string name = "dialogTime">Insert time</string>
@@ -44,7 +43,6 @@
 	<string name = "toastLose">You Lose!</string>
 	<string name = "toastDraw">Draw!</string>
 	<string name = "toastEndTime">End time!</string>
-
 	<string name = "toastCorrectSave">Correct save in DB</string>
 	<string name = "toastErrorSave">Error when save in DB</string>
 
@@ -100,4 +98,8 @@
 	<string name = "prefListGrid">prefListGrid</string>
 	<string name = "prefTime">prefTime</string>
 
+	<!--- Register -->
+	<string name = "dialogTitleDelete">Delete game</string>
+	<string name = "dialogMessageDelete">Are you sure you want to delete this game?</string>
+	<string name = "toastDelete">Deleted game</string>
 </resources>

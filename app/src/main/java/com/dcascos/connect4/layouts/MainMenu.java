@@ -1,6 +1,7 @@
 package com.dcascos.connect4.layouts;
 
 import android.app.ActivityOptions;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.PopupMenu;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.dcascos.connect4.R;
@@ -62,9 +64,26 @@ public class MainMenu extends AppCompatActivity implements PopupMenu.OnMenuItemC
 			@Override
 			public void onClick(View v) {
 				clickSound.start();
-				finish();
+				showDialog();
 			}
 		});
+	}
+
+	private void showDialog() {
+		new AlertDialog.Builder(this)
+				.setTitle(R.string.dialogTitle)
+				.setMessage(R.string.dialogMessage)
+				.setPositiveButton(R.string.True, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						finish();
+					}
+				})
+				.setNegativeButton(R.string.False, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+					}
+				}).show();
 	}
 
 	public void showConfMenu(View v) {
