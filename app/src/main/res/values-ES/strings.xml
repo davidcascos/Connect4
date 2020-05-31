@@ -78,7 +78,7 @@
 	<string name = "keyTimeControl">keyTimeControl</string>
 	<string name = "keyMillisLeft">keyMillisLeft</string>
 	<string name = "keyText">keyText</string>
-	<string name = "keyItemId">keyItemId</string>
+	<string name = "keyItemPosition">keyItemPosition</string>
 	<string name = "keyTimePlayed">keyTimePlayed</string>
 	<string name = "keyStatus">keyStatus</string>
 	<string name = "keyLog">keyLog</string>
