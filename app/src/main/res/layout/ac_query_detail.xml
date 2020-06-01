@@ -45,14 +45,32 @@
 			android:textStyle = "bold|italic"/>
 	</LinearLayout>
 
-	<fragment
-		android:id = "@+id/fr_query_detail"
-		android:name = "com.dcascos.connect4.fragments.QueryDetailFrag"
-		android:layout_width = "match_parent"
-		android:layout_height = "match_parent"
+	<LinearLayout
+		android:id = "@+id/linearResults"
+		android:layout_width = "wrap_content"
+		android:layout_height = "wrap_content"
 		android:layout_below = "@+id/linearTitle"
 		android:layout_centerHorizontal = "true"
-		android:layout_marginTop = "20dp"
-		android:layout_marginBottom = "20dp"
-		tools:layout = "@layout/fr_query_detail"/>
+		android:orientation = "vertical">
+
+		<fragment
+			android:id = "@+id/fr_query_detail"
+			android:name = "com.dcascos.connect4.fragments.QueryDetailFrag"
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			android:layout_marginTop = "20dp"
+			android:layout_marginBottom = "20dp"
+			android:layout_weight = "1"
+			tools:layout = "@layout/fr_query_detail"/>
+
+		<fragment
+			android:id = "@+id/fr_result_p_frag"
+			android:name = "com.dcascos.connect4.fragments.ResultPFrag"
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			android:layout_marginBottom = "20dp"
+			android:layout_weight = "2"
+			tools:layout = "@layout/fr_result_p_frag"/>
+
+	</LinearLayout>
 </RelativeLayout>
