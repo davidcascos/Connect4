@@ -25,7 +25,6 @@ import androidx.fragment.app.Fragment;
 import com.dcascos.connect4.R;
 import com.dcascos.connect4.database.DBHelper;
 import com.dcascos.connect4.database.DBManager;
-import com.dcascos.connect4.logic.Status;
 
 import java.util.Objects;
 
@@ -34,9 +33,13 @@ public class QueryFrag extends Fragment {
 
 	DBManager dbManager;
 
-	private final String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
-	private final String[] from = new String[]{DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
-	private final int[] to = new int[]{R.id.tv_alias, R.id.tv_date, R.id.tv_result, R.id.iv_register};
+//	private final String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
+//	private final String[] from = new String[]{DBHelper.ALIAS, DBHelper.DATE, DBHelper.RESULT, DBHelper.IMAGE};
+//	private final int[] to = new int[]{R.id.tv_alias, R.id.tv_date, R.id.tv_result, R.id.iv_register};
+
+	private final String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.IMAGE};
+	private final String[] from = new String[]{DBHelper.ALIAS, DBHelper.DATE, DBHelper.IMAGE};
+	private final int[] to = new int[]{R.id.tv_alias, R.id.tv_date, R.id.iv_register};
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -119,26 +122,26 @@ public class QueryFrag extends Fragment {
 					return true;
 				}
 
-				if (view.getId() == R.id.tv_result) {
-					int getResultIndex = cursor.getColumnIndex(DBHelper.RESULT);
-					String status = cursor.getString(getResultIndex);
-					String result;
-
-					if (status.equals(Status.PLAYER1_WINS.toString())) {
-						result = getString(R.string.victory);
-					} else if (status.equals(Status.PLAYER2_WINS.toString())) {
-						result = getString(R.string.defeat);
-					} else if (status.equals(Status.DRAW.toString())) {
-						result = getString(R.string.draw);
-					} else {
-						result = getString(R.string.toastEndTime);
-					}
-
-					TextView tv_result = (TextView) view;
-					tv_result.setText(result);
-					tv_result.setSelected(true);
-					return true;
-				}
+//				if (view.getId() == R.id.tv_result) {
+//					int getResultIndex = cursor.getColumnIndex(DBHelper.RESULT);
+//					String status = cursor.getString(getResultIndex);
+//					String result;
+//
+//					if (status.equals(Status.PLAYER1_WINS.toString())) {
+//						result = getString(R.string.victory);
+//					} else if (status.equals(Status.PLAYER2_WINS.toString())) {
+//						result = getString(R.string.defeat);
+//					} else if (status.equals(Status.DRAW.toString())) {
+//						result = getString(R.string.draw);
+//					} else {
+//						result = getString(R.string.toastEndTime);
+//					}
+//
+//					TextView tv_result = (TextView) view;
+//					tv_result.setText(result);
+//					tv_result.setSelected(true);
+//					return true;
+//				}
 
 				if (view.getId() == R.id.iv_register) {
 					int getResultIndex = cursor.getColumnIndex(DBHelper.IMAGE);

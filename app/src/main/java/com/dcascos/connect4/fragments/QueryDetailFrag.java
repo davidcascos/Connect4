@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import com.dcascos.connect4.R;
 import com.dcascos.connect4.database.DBHelper;
 import com.dcascos.connect4.database.DBManager;
-import com.dcascos.connect4.logic.Status;
 
 import java.util.Objects;
 
@@ -32,7 +31,7 @@ public class QueryDetailFrag extends Fragment {
 	private String gridSize;
 	private String check;
 	private String time;
-	private String result;
+	//private String result;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -54,7 +53,7 @@ public class QueryDetailFrag extends Fragment {
 			gridSize = savedInstanceState.getString(getString(R.string.keyGridSize));
 			check = savedInstanceState.getString(getString(R.string.keyCheck));
 			time = savedInstanceState.getString(getString(R.string.keyTime));
-			result = savedInstanceState.getString(getString(R.string.keyResult));
+			//result = savedInstanceState.getString(getString(R.string.keyResult));
 			initTextViews();
 			fillCamps();
 		}
@@ -63,7 +62,8 @@ public class QueryDetailFrag extends Fragment {
 	public void showDetails(int position) {
 		DBManager dbManager = new DBManager(getActivity());
 		dbManager.openRead();
-		String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.SIZE, DBHelper.TIMING, DBHelper.TIME, DBHelper.RESULT};
+		//String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.SIZE, DBHelper.TIMING, DBHelper.TIME, DBHelper.RESULT};
+		String[] columns = new String[]{DBHelper._ID, DBHelper.ALIAS, DBHelper.DATE, DBHelper.SIZE, DBHelper.TIMING, DBHelper.TIME};
 		Cursor cursor = dbManager.getCursor(columns);
 
 		if (cursor.moveToFirst()) {
@@ -75,17 +75,17 @@ public class QueryDetailFrag extends Fragment {
 		gridSize = String.valueOf(cursor.getInt(3));
 		check = cursor.getInt(4) != 0 ? getString(R.string.True) : getString(R.string.False);
 		time = cursor.getString(5);
-		String status = cursor.getString(6);
-
-		if (status.equals(Status.PLAYER1_WINS.toString())) {
-			result = getString(R.string.victory);
-		} else if (status.equals(Status.PLAYER2_WINS.toString())) {
-			result = getString(R.string.defeat);
-		} else if (status.equals(Status.DRAW.toString())) {
-			result = getString(R.string.draw);
-		} else {
-			result = getString(R.string.toastEndTime);
-		}
+//		String status = cursor.getString(6);
+//
+//		if (status.equals(Status.PLAYER1_WINS.toString())) {
+//			result = getString(R.string.victory);
+//		} else if (status.equals(Status.PLAYER2_WINS.toString())) {
+//			result = getString(R.string.defeat);
+//		} else if (status.equals(Status.DRAW.toString())) {
+//			result = getString(R.string.draw);
+//		} else {
+//			result = getString(R.string.toastEndTime);
+//		}
 
 		initTextViews();
 		fillCamps();
@@ -99,7 +99,7 @@ public class QueryDetailFrag extends Fragment {
 		tv_timeControl = Objects.requireNonNull(getView()).findViewById(R.id.tv_timeControl);
 		tv_titleTime = Objects.requireNonNull(getView()).findViewById(R.id.tv_titleTime);
 		tv_time = Objects.requireNonNull(getView()).findViewById(R.id.tv_time);
-		tv_result = Objects.requireNonNull(getView()).findViewById(R.id.tv_result);
+	//	tv_result = Objects.requireNonNull(getView()).findViewById(R.id.tv_result);
 	}
 
 	private void fillCamps() {
@@ -113,7 +113,7 @@ public class QueryDetailFrag extends Fragment {
 		tv_gridSize.setText(gridSize);
 		tv_timeControl.setText(check);
 		tv_time.setText(time);
-		tv_result.setText(result);
+		//tv_result.setText(result);
 	}
 
 	@Override
@@ -125,6 +125,6 @@ public class QueryDetailFrag extends Fragment {
 		outState.putString(getString(R.string.keyGridSize), gridSize);
 		outState.putString(getString(R.string.keyCheck), check);
 		outState.putString(getString(R.string.keyTime), time);
-		outState.putString(getString(R.string.keyResult), result);
+		//outState.putString(getString(R.string.keyResult), result);
 	}
 }
