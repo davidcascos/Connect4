@@ -93,7 +93,7 @@
 			android:id = "@+id/linearTitleDetails"
 			android:layout_width = "wrap_content"
 			android:layout_height = "wrap_content"
-			android:layout_marginTop = "80dp"
+			android:layout_marginTop = "30dp"
 			android:orientation = "horizontal">
 
 			<ImageView
@@ -122,5 +122,14 @@
 			android:layout_marginBottom = "20dp"
 			android:layout_weight = "1"
 			tools:layout = "@layout/fr_query_detail"/>
+
+		<fragment
+			android:id = "@+id/fr_result_p_frag"
+			android:name = "com.dcascos.connect4.fragments.ResultPFrag"
+			android:layout_width = "match_parent"
+			android:layout_height = "match_parent"
+			android:layout_marginBottom = "20dp"
+			android:layout_weight = "1"
+			tools:layout = "@layout/fr_result_p_frag"/>
 	</LinearLayout>
 </RelativeLayout>

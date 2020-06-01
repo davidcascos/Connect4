@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -17,6 +18,7 @@ import com.dcascos.connect4.logic.Status;
 
 public class ResultPFrag extends Fragment {
 	private ImageView iv_resultado;
+	String status;
 
 
 	@Override
@@ -32,10 +34,14 @@ public class ResultPFrag extends Fragment {
 	@Override
 	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+
+		if (savedInstanceState != null) {
+			status = savedInstanceState.getString(getString(R.string.keyResult));
+			fillCamps();
+		}
 	}
 
 	public void showImage(int position) {
-		iv_resultado = getActivity().findViewById(R.id.iv_resultado);
 		DBManager dbManager = new DBManager(getActivity());
 		dbManager.openRead();
 		String[] columns = new String[]{DBHelper._ID, DBHelper.RESULT};
@@ -45,7 +51,13 @@ public class ResultPFrag extends Fragment {
 			cursor.moveToPosition(position);
 		}
 
-		String status = cursor.getString(1);
+		status = cursor.getString(1);
+		fillCamps();
+		dbManager.close();
+	}
+
+	private void fillCamps() {
+		iv_resultado = getActivity().findViewById(R.id.iv_resultado);
 
 		if (status.equals(Status.PLAYER1_WINS.toString())) {
 			iv_resultado.setImageResource(R.drawable.victoria);
@@ -56,6 +68,12 @@ public class ResultPFrag extends Fragment {
 		} else if (status.equals(Status.ALL_PLAYER_LOSE.toString())) {
 			iv_resultado.setImageResource(R.drawable.tiempoagotado);
 		}
-		dbManager.close();
+	}
+
+	@Override
+	public void onSaveInstanceState(@NonNull Bundle outState) {
+		super.onSaveInstanceState(outState);
+
+		outState.putString(getString(R.string.keyResult), status);
 	}
 }
