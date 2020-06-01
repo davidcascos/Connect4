@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dcascos.connect4.R;
 import com.dcascos.connect4.fragments.QueryDetailFrag;
+import com.dcascos.connect4.fragments.ResultPFrag;
 
 import java.util.Objects;
 
@@ -30,9 +31,12 @@ public class QueryDetail extends AppCompatActivity {
 			}
 		});
 
-		int itemId = getIntent().getIntExtra(getString(R.string.keyItemPosition), 1);
+		int position = getIntent().getIntExtra(getString(R.string.keyItemPosition), 1);
 
 		QueryDetailFrag queryDetailFrag = (QueryDetailFrag) getSupportFragmentManager().findFragmentById(R.id.fr_query_detail);
-		Objects.requireNonNull(queryDetailFrag).showDetails(itemId);
+		Objects.requireNonNull(queryDetailFrag).showDetails(position);
+
+		ResultPFrag resultPFrag = (ResultPFrag) getSupportFragmentManager().findFragmentById(R.id.fr_result_p_frag);
+		Objects.requireNonNull(resultPFrag).showImage(position);
 	}
 }

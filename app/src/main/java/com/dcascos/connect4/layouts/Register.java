@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dcascos.connect4.R;
 import com.dcascos.connect4.fragments.QueryDetailFrag;
+import com.dcascos.connect4.fragments.ResultPFrag;
+
+import java.util.Objects;
 
 public class Register extends AppCompatActivity {
 
@@ -36,8 +39,10 @@ public class Register extends AppCompatActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				QueryDetailFrag queryDetailFrag = (QueryDetailFrag) getSupportFragmentManager().findFragmentById(R.id.fr_query_detail);
+				ResultPFrag resultPFrag = (ResultPFrag) getSupportFragmentManager().findFragmentById(R.id.fr_result_p_frag);
 				if (queryDetailFrag != null && queryDetailFrag.isInLayout()) {
 					queryDetailFrag.showDetails(position);
+					Objects.requireNonNull(resultPFrag).showImage(position);
 				} else {
 					Intent intent = new Intent(Register.this, QueryDetail.class);
 					intent.putExtra(getString(R.string.keyItemPosition), position);
