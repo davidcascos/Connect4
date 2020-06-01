@@ -229,10 +229,11 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 		DBManager dbManager = new DBManager(getActivity());
 		String result = game.getStatus().toString();
 		byte[] imageInByte = setImageOfState();
+		byte[] imageResultado = setImageResultado();
 
 		dbManager.openWrite();
 		try {
-			dbManager.insert(alias, actualDate, gridSize, timeControl, timePlayed, result, imageInByte);
+			dbManager.insert(alias, actualDate, gridSize, timeControl, timePlayed, result, imageInByte, imageResultado);
 		} catch (Exception e) {
 			Toast.makeText(getActivity(), getString(R.string.toastErrorSave), Toast.LENGTH_SHORT).show();
 		}
@@ -250,6 +251,24 @@ public class GridFrag extends Fragment implements AdapterView.OnItemClickListene
 			icon = BitmapFactory.decodeResource(getResources(), R.drawable.iv_lose);
 		} else {
 			icon = BitmapFactory.decodeResource(getResources(), R.drawable.iv_lose);
+		}
+
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		icon.compress(Bitmap.CompressFormat.PNG, 0, stream);
+		return stream.toByteArray();
+	}
+
+	private byte[] setImageResultado() {
+		Bitmap icon;
+
+		if (game.getStatus() == Status.PLAYER1_WINS) {
+			icon = BitmapFactory.decodeResource(getResources(), R.drawable.victoria);
+		} else if (game.getStatus() == Status.DRAW) {
+			icon = BitmapFactory.decodeResource(getResources(), R.drawable.empate);
+		} else if (game.getStatus() == Status.ALL_PLAYER_LOSE) {
+			icon = BitmapFactory.decodeResource(getResources(), R.drawable.tiempoagotado);
+		} else {
+			icon = BitmapFactory.decodeResource(getResources(), R.drawable.derrota);
 		}
 
 		ByteArrayOutputStream stream = new ByteArrayOutputStream();
